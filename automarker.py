@@ -58,7 +58,7 @@ class TuringMachineComputation:
         if (current_transition[2] == self.machine.reject_state):
             self.status = ComputationStatus.REJECTED
 
-    def step_until_halt(self, max_steps = 10000):
+    def step_until_halt(self, max_steps = 1_000_000):
         for _ in range(max_steps):
             if self.status == ComputationStatus.REJECTED or self.status == ComputationStatus.ACCEPTED:
                 break
