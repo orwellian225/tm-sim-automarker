@@ -2,7 +2,7 @@
 
 An automarking tool that uses the JSON TM's from this [simulator](https://tm.seagrass.co.za).
 
-> [!INFO]
+> [!WARNING]
 > Currently in python, but will eventually switch over to a compiled language for performance reasons
 
 ## Usage
