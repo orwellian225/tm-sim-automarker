@@ -93,13 +93,12 @@ def eprint(message):
     print(message, file=sys.stderr)
 
 def main():
-    if len(sys.argv) != 4:
-        eprint("Incorrect Arguments: Specify JSON Turing Machine filepath, Computation input string and, the expected outcome (0 = reject, 1 = accept)")
+    if len(sys.argv) != 2:
+        eprint("Incorrect Arguments: Specify JSON Turing Machine filepath")
         exit(-1)
 
     json_tm_filepath = str(sys.argv[1])
-    test_case = str(sys.argv[2])
-    outcome = ComputationStatus(int(sys.argv[3]))
+    test_case = str(input())
 
     with open(json_tm_filepath, 'r', encoding='utf-8') as f:
         json_tm_file = f.read()
@@ -110,7 +109,7 @@ def main():
 
     computation = TuringMachineComputation(tm_file.machine, test_case)
     computation.step_until_halt()
-    print(int(computation.status == outcome))
+    print(computation.status.value)
 
 if __name__ == "__main__":
     main()
