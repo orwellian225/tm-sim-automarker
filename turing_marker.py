@@ -50,10 +50,15 @@ class TuringMachineComputation:
         if self.head + current_transition[4] >= len(self.tape):
             self.tape = self.tape + [ 0 for _ in range(len(self.tape)) ]
 
-        if self.head + current_transition[4] < 0:
-            self.tape = [ 0 for _ in range(len(self.tape))] + self.tape
+        if self.head < 0:
             self.head = len(self.tape) + current_transition[4]
+            self.tape = [ 0 for _ in range(len(self.tape))] + self.tape
 
+        # print(
+        #     [ self.machine.alphabet[s] for idx, s in enumerate(self.tape) if idx < self.head ], 
+        #     self.machine.states[self.state],
+        #     [ self.machine.alphabet[s] for idx, s in enumerate(self.tape) if idx >= self.head ], 
+        # )
 
         if (current_transition[2] == self.machine.accept_state):
             self.status = ComputationStatus.ACCEPTED
